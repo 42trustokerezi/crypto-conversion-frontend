@@ -1,0 +1,45 @@
+
+.display-wrapper {
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+    width: 80%;
+    margin: auto;
+    padding: 5rem;
+    margin-top: 10rem;
+    background-color: white;
+}
+
+form{
+    margin:auto;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-content{
+    display:inline-block; 
+    margin: 0 1rem;
+}
+.form-content p {
+    font-size: 12px;
+    color: gray;
+}
+
+.form-content select{
+    width: 5rem;
+    height: 1.7rem;
+    /* padding: 0.3rem 0.5rem; */
+}
+
+.form-content input{
+    height: 1.5rem;
+}
+
+button{
+    width: 5rem;
+    background-color: #3bb273;
+    color: #fff;
+    border: none;
+    height: 2rem;
+    border-radius: 0.3em
+}
