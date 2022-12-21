@@ -43,3 +43,28 @@ button{
     height: 2rem;
     border-radius: 0.3em
 }
+
+/*records*/
+.table-container{
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    margin-top: 10rem;
+    padding: 5rem;
+}
+table{
+    width: 100%;
+    margin: auto;
+}
+tr{
+    margin: 2rem 0;
+}
+th{
+    padding: 2rem 0;
+}
+td{
+    padding: 1rem 0;
+}
+tr:nth-child(odd){
+    background-color:#dee2e6;
+} 
