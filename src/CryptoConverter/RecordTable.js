@@ -19,7 +19,7 @@ const RecordTable = () => {
     useEffect(() => {
         
         getAllRecords()
-    },[getAllRecords])
+    },[])
 
 
   return (

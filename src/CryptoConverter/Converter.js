@@ -5,6 +5,8 @@ import UK from '../Assets/united-kingdom.png';
 import france from '../Assets/france.png'
 import axios from 'axios'
 
+// require('dotenv').config()
+
 const Converter = () => {
     const [initialState, setState] = useState({
         fiats: [
@@ -56,6 +58,9 @@ const Converter = () => {
         }
             getCryptoPrice();
         }
+
+        console.log(process.env)
+        
     }, [amount, fiats, tokens])
 
     const onChangeInput = (e) => {

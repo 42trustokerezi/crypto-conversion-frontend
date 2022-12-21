@@ -68,3 +68,20 @@ td{
 tr:nth-child(odd){
     background-color:#dee2e6;
 } 
+
+@media screen and (max-width: 768px){
+    .table-container{
+        width: 100%;
+        padding: 0rem;
+    }
+    table{
+        table-layout: fixed;
+    }
+    tr{
+        font-size: 10px;
+        margin: 0;
+    }
+    .display-wrapper{
+        padding: 2rem;
+    }
+}
