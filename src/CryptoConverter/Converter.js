@@ -3,6 +3,7 @@ import './main.css'
 import USA from '../Assets/united-states.png';
 import UK from '../Assets/united-kingdom.png';
 import france from '../Assets/france.png'
+import axios from 'axios'
 
 const Converter = () => {
     const [initialState, setState] = useState({
@@ -37,7 +38,7 @@ const Converter = () => {
             const getCryptoPrice = () => {fetch(baseURL, {
                 method: 'GET',
                 headers: {
-                    'X-CoinAPI-Key': '88423308-C70C-466D-89F0-7953A74EA018'
+                    'X-CoinAPI-Key': '1FCCF07D-BC1C-40BC-B00D-817031BE4EEC'
                 }
             }).then(response => response.json())
             .then(response => {
@@ -58,12 +59,13 @@ const Converter = () => {
     }, [amount, fiats, tokens])
 
     const onChangeInput = (e) => {
-        setState({
+        const data = {
             ...initialState,
             amount: e.target.value,
-            result: null,
-            date: null
-        })
+            result,
+            date
+        }
+        setState(data)
     }
 
 
@@ -75,11 +77,32 @@ const Converter = () => {
         })
     }
 
+    const handleSubmit = async(e)=> {
+        e.preventDefault();
+        const data = {
+            convertTo: convertTo,
+            crypto: crypto,
+            amount: amount,
+            result: result,
+            date: date
+        }
+        console.log(data);
+
+        await axios.post('http://localhost:8080/record', data).then((res)=>{
+            console.log(res.data)
+            setState({
+                ...initialState,
+                date,
+                result
+            })
+        }).catch((error)=>{console.log(error)})
+    }
+
   return (
     <div className="main-container">
         <div className="display-wrapper">
             <h2>Exchange</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-content">
                     <p>Currency from</p>
                     <select
@@ -101,6 +124,7 @@ const Converter = () => {
                         type="number"
                         amount={amount}
                         onChange={onChangeInput}
+                        defaultValue="1"
                     />
                 </div>
                 <div className="form-content">
@@ -122,16 +146,18 @@ const Converter = () => {
                     <input 
                         disabled={true}
                         value={
-                          amount === ""
-                            ? "0"
+                          amount === 1
+                            ? result
                             : result === null
                             ? "0"
                             : result
                         }
                     />
                 </div>
-
-                <button>Save</button>
+                        {
+                            console.log('initial', initialState)
+                        }
+                <button type='submit'>Save</button>
             </form>
         </div>
     </div>
